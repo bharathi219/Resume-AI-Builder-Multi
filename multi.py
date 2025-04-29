@@ -3,6 +3,13 @@ import pdfplumber
 import spacy
 from sklearn.feature_extraction.text import CountVectorizer
 from sklearn.metrics.pairwise import cosine_similarity
+import pdfplumber
+
+with pdfplumber.open(uploaded_file) as pdf:
+    text = ""
+    for page in pdf.pages:
+        text += page.extract_text()
+
 
 nlp = spacy.load("en_core_web_sm")
 
